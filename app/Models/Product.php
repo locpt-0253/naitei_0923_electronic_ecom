@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Image;
 use App\Models\Review;
 use App\Models\Category;
 use Illuminate\Database\Eloquent\Model;
@@ -35,6 +36,6 @@ class Product extends Model
 
     public function images()
     {
-        return $this->morphOne(Image::class, 'imageable');
+        return $this->morphMany(Image::class, 'imageable');
     }
 }
