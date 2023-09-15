@@ -89,6 +89,19 @@ return [
         'female' => 2
     ],
 
+    'product_status' => [
+        'new' =>  1,
+        'old' =>  2,
+        'highlighted' =>  3,
+        'special' =>  4,
+        'limited' =>  5,
+    ],
+
+    'role_name' => [
+        'admin' => 'Admin',
+        'user' => 'Customer'
+    ],
+
     /*
     |--------------------------------------------------------------------------
     | Application Fallback Locale
