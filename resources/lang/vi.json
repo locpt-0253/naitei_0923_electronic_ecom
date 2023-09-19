@@ -255,6 +255,7 @@
     "Delaware": "Delaware",
     "Delete": "Xóa",
     "Delete Account": "Xóa Tài khoản",
+    "Delete :resource :status": "Xóa :resource :status",
     "Delete all notifications": "Xóa tất cả thông báo",
     "Delete Announcement": "Xóa thông báo",
     "Delete API Token": "Xóa API Token",
@@ -263,6 +264,7 @@
     "Delete Selected": "Xoá Đã Chọn",
     "Delete Team": "Xóa Nhóm",
     "Delete Token": "Xóa mã thông báo",
+    "Delete Confirm": "Bạn có chắc chắn muốn xóa?",
     "Deleting": "Đang xóa",
     "Denmark": "Đan Mạch",
     "Detach": "Gỡ",
@@ -981,6 +983,7 @@
     "Update & Continue Editing": "Cập Nhật & Và Tiếp Tục Chỉnh Sửa",
     "Update :resource": "Cập Nhật :resource",
     "Update :resource: :title": "Cập Nhật :resource: :title",
+    "Update :resource :status": "Cập Nhật :resource :status",
     "Update Announcement": "Thông báo cập nhật",
     "Update attached :resource: :title": "Cập Nhật :resource Đã Gắn: :title",
     "Update Billing Address": "Cập nhật địa chỉ thanh toán",
@@ -1125,5 +1128,13 @@
     "Zimbabwe": "Zimbabwe",
     "ZIP / Postal Code": "ZIP / Mã bưu điện",
     "Zip / Postal Code": "Zip / Mã Bưu Điện",
-    "Åland Islands": "Quần đảo Åland"
+    "Åland Islands": "Quần đảo Åland",
+    "Product": "Sản phẩm",
+    "Gender": "Giới tính",
+    "First Name": "Họ",
+    "Last Name": "Tên",
+    "Male": "Nam",
+    "Female": "Nữ",
+    "Success": "thành công",
+    "Failure": "thất bại"
 }
