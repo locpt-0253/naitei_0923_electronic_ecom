@@ -255,6 +255,7 @@
     "Delaware": "Delaware",
     "Delete": "Delete",
     "Delete Account": "Delete Account",
+    "Delete :resource :status": "Delete :resource :status",
     "Delete all notifications": "Delete all notifications",
     "Delete Announcement": "Delete Announcement",
     "Delete API Token": "Delete API Token",
@@ -263,6 +264,7 @@
     "Delete Selected": "Delete Selected",
     "Delete Team": "Delete Team",
     "Delete Token": "Delete Token",
+    "Delete Confirm": "Are you sure you want to delete?",
     "Deleting": "Deleting",
     "Denmark": "Denmark",
     "Detach": "Detach",
@@ -981,6 +983,7 @@
     "Update & Continue Editing": "Update & Continue Editing",
     "Update :resource": "Update :resource",
     "Update :resource: :title": "Update :resource: :title",
+    "Update :resource :status": "Update :resource :status",
     "Update Announcement": "Update Announcement",
     "Update attached :resource: :title": "Update attached :resource: :title",
     "Update Billing Address": "Update Billing Address",
@@ -1125,5 +1128,13 @@
     "Zimbabwe": "Zimbabwe",
     "ZIP / Postal Code": "ZIP / Postal Code",
     "Zip / Postal Code": "Zip / Postal Code",
-    "Åland Islands": "Åland Islands"
+    "Åland Islands": "Åland Islands",
+    "Product": "Product",
+    "Gender": "Gender",
+    "First Name": "First Name",
+    "Last Name": "Last Name",
+    "Male": "Male",
+    "Female": "Female",
+    "Success": "Success",
+    "Failure": "Failure"
 }
