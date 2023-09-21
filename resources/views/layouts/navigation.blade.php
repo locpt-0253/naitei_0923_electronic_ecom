@@ -10,12 +10,15 @@
                     </a>
                 </div>
                 <div class="shrink-0 flex items-center space-x-8 ml-10">
-                    <div class="bg-slate-100 rounded-full w-[350px] h-12 border-gray-200 flex items-center justify-between">
-                        <div class="py-3 px-5">
-                            <i class="fi fi-bs-search text-gray-600"></i>
-                            <input class="bg-inherit outline-none min-w-[250px] ml-2" placeholder="Tìm kiếm sản phẩm" />
+                    <form action="{{ route('products.search') }}" method="GET">
+                        <div class="bg-slate-100 rounded-full w-[400px] h-12 border-gray-200 flex items-center justify-start">
+                            <div class="py-3 px-5">
+                                <i class="fi fi-bs-search text-gray-600"></i>
+                                <input name="keyword" class="bg-inherit outline-none min-w-[250px] ml-2" placeholder="{{ __('Search for products') }}" />
+                            </div>
+                            <button class="px-3 py-1 text-blue-500 rounded-full" type="submit">{{ __('Search') }}</button>
                         </div>
-                    </div>
+                    </form>
                 </div>
             </div>
             
@@ -73,7 +76,7 @@
                             </form>
                         </x-slot>
                     </x-dropdown>
-                </div>    
+                </div>
             </div>
 
             <!-- Hamburger -->
