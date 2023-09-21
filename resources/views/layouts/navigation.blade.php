@@ -9,6 +9,7 @@
                         <x-application-logo class="block h-10 w-auto fill-current text-gray-600" />
                     </a>
                 </div>
+                @if(Auth::user()->role->name == config('app.role_name')['user'])
                 <div class="shrink-0 flex items-center space-x-8 ml-10">
                     <div class="bg-slate-100 rounded-full w-[350px] h-12 border-gray-200 flex items-center justify-between">
                         <div class="py-3 px-5">
@@ -17,9 +18,11 @@
                         </div>
                     </div>
                 </div>
+                @endif
             </div>
             
             <div class="flex">
+                @if(Auth::user()->role->name == config('app.role_name')['user'])
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-6 sm:flex">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
@@ -44,6 +47,7 @@
                         </div>
                     </a>
                 </div>
+                @endif
 
                 <!-- Settings Dropdown -->
                 <div class="hidden sm:flex sm:items-center sm:ml-6">

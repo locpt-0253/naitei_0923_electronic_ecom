@@ -2,3 +2,4 @@
 @tailwind components;
 @tailwind utilities;
 @import "~@flaticon/flaticon-uicons/css/all/all";
+@import url('./table.css');
