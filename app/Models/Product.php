@@ -24,6 +24,16 @@ class Product extends Model
         'category_id',
     ];
 
+    public function getAverageRatingsAttribute()
+    {
+        return round($this->reviews()->avg('star'), 1);
+    }
+
+    public function getThumbnailImageAttribute()
+    {
+        return $this->images()->first()->image_url;
+    }
+
     public function category()
     {
         return $this->belongsTo(Category::class, 'category_id', 'id');
