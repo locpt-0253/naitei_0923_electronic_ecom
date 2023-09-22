@@ -86,7 +86,8 @@ return [
 
     'gender' => [
         'male' => 1,
-        'female' => 2
+        'female' => 2,
+        'other' => 3,
     ],
 
     'product_status' => [
@@ -112,6 +113,11 @@ return [
     'available_sort' => [
         'asc',
         'desc',
+    ],
+
+    'default_image' => [
+        'user' => '/storage/default_user.png',
+        'product' => '/storage/default_product.png',
     ],
 
     /*

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\LocaleController;
 use App\Http\Controllers\Product\ProductController;
 use Illuminate\Support\Facades\Route;
@@ -32,6 +33,11 @@ Route::prefix('/cart')->name('cart.')->middleware('auth')->group(function () {
     Route::post('/', [CartController::class, 'store'])->name('store');
     Route::put('/{cart}', [CartController::class, 'update'])->name('update');
     Route::delete('/{cart}', [CartController::class, 'destroy'])->name('destroy');
+});
+
+Route::prefix('/customer')->name('customer.')->middleware('auth')->group(function () {
+    Route::get('/profile', [CustomerController::class, 'show'])->name('show');
+    Route::put('/profile', [CustomerController::class, 'update'])->name('update');
 });
 
 Route::middleware('auth')->group(function () {
