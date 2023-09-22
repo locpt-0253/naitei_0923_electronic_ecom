@@ -32,16 +32,16 @@
 
                 <!-- Cart -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-4 sm:flex">
-                    <a href="/cart" class="block self-center cursor-pointer">
+                    <a href="{{ route('cart.index') }}" class="block self-center cursor-pointer">
                         <div class="text-center min-h-[50px] min-w-[50px] bg-gray-100 hover:bg-neutral-200 rounded-full flex items-center">
                             <i class="mx-auto fi fi-ss-shopping-cart text-2xl text-slate-600"></i>
                         </div>
                     </a>
                 </div>
 
-                <!-- Cart -->
+                <!-- Profile -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-4 sm:flex">
-                    <a href="/users" class="block self-center cursor-pointer">
+                    <a href="{{ route('customer.show') }}" class="block self-center cursor-pointer">
                         <div class="text-center min-h-[50px] min-w-[50px] bg-gray-100 hover:bg-neutral-200 rounded-full flex items-center">
                             <i class="mx-auto fi fi-sr-user text-2xl text-slate-600"></i>
                         </div>
