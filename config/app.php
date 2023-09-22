@@ -102,6 +102,18 @@ return [
         'user' => 'Customer'
     ],
 
+    'available_sort_by' => [
+        'name',
+        'pop',
+        'created_at',
+        'price',
+    ],
+
+    'available_sort' => [
+        'asc',
+        'desc',
+    ],
+
     /*
     |--------------------------------------------------------------------------
     | Application Fallback Locale

@@ -2,19 +2,48 @@
 
 namespace App\Http\Controllers\Product;
 
+use App\Http\Requests\ProductRequest;
+use App\Models\Product;
+use App\Models\Category;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Product\StoreProductRequest;
 use App\Http\Requests\Product\UpdateProductRequest;
-use App\Models\Product;
 
 class ProductController extends Controller
 {
-    public function index()
+    public function index(ProductRequest $request)
     {
-        $products = Product::paginate(20);
+        $request->validated();
+        
+        $categoryId = $request->categoryId;
+        $sortBy = $request->input('sortBy', 'name');
+        $sort = $request->input('sort', 'desc');
+        $ratingFilter = $request->ratingFilter;
+        $minPrice = $request->input('minPrice', 0);
+        $maxPrice = $request->maxPrice;
 
-        return response()->json([
-            "data" => $products,
+        $allCategories = Category::all();
+        $currentCategory = $categoryId ? Category::find($categoryId) : null;
+
+        $products = Product::with('reviews')
+            ->when($minPrice, function ($query) use ($minPrice) {
+                return $query->where('price', '>=', $minPrice);
+            })
+            ->when($maxPrice, function ($query) use ($maxPrice) {
+                return $query->where('price', '<=', $maxPrice);
+            })
+            ->when($sortBy, function ($query) use ($sortBy, $sort) {
+                return $query->orderBy($sortBy, $sort);
+            })
+            ->when($categoryId, function ($query) use ($categoryId) {
+                return $query->where('category_id', $categoryId);
+            })
+            ->paginate(20);
+
+        return view('product.index', [
+            'products' => $products,
+            'allCategories' => $allCategories,
+            'currentCategory' => $currentCategory,
         ]);
     }
 
@@ -22,39 +51,8 @@ class ProductController extends Controller
     {
         $product = Product::with('reviews.user', 'category')->find($productId);
 
-        return response()->json([
-            "data" => $product,
-        ]);
-    }
-
-    public function store(StoreProductRequest $request)
-    {
-        $validatedData = $request->validated();
-
-        $product = Product::create($validatedData);
-
-        return response()->json([
-            "data" => $product,
-        ]);
-    }
-
-    public function update(UpdateProductRequest $request, Product $product)
-    {
-        $validatedData = $request->validate();
-
-        $product->update($validatedData);
-
-        return response()->json([
-            "data" => $product,
-        ]);
-    }
-
-    public function destroy(Product $product)
-    {
-        $product->delete();
-
-        return response()->json([
-            "message" => "Product deleted successfully!",
+        return view('product.show', [
+            'product' => $product,
         ]);
     }
 }

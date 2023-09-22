@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\LocaleController;
 use App\Http\Controllers\Product\ProductController;
 use Illuminate\Support\Facades\Route;
@@ -20,15 +21,20 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::middleware('auth')->group(function () {
-    Route::prefix('products')->middleware('admin')->group(function () {
-        Route::get('/', [ProductController::class, 'index']);
-        Route::get('/{product}', [ProductController::class, 'show']);
-        Route::post('/', [ProductController::class, 'store']);
-        Route::put('/{product}', [ProductController::class, 'update']);
-        Route::delete('/{product}', [ProductController::class, 'delete']);
-    });
+Route::prefix('/products')->name('products.')->group(function () {
+    Route::get('/', [ProductController::class, 'index'])->name('index');
+    Route::get('/search', [ProductController::class, 'search'])->name('search');
+    Route::get('/{productId}', [ProductController::class, 'show'])->name('show');
+});
 
+Route::prefix('/cart')->name('cart.')->middleware('auth')->group(function () {
+    Route::get('/', [CartController::class, 'index'])->name('index');
+    Route::post('/', [CartController::class, 'store'])->name('store');
+    Route::put('/{cart}', [CartController::class, 'update'])->name('update');
+    Route::delete('/{cart}', [CartController::class, 'destroy'])->name('destroy');
+});
+
+Route::middleware('auth')->group(function () {
     Route::prefix('admin')->middleware('admin')->name('admin.')->group(function () {
         Route::prefix('users')->name('users.')->group(function () {
             Route::get('/', [UserController::class, 'index'])->name('index');
