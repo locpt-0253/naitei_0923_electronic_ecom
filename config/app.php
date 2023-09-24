@@ -97,9 +97,28 @@ return [
         'limited' =>  5,
     ],
 
+    'admin_page_pagination_size' => 8,
+
     'role_name' => [
         'admin' => 'Admin',
         'user' => 'Customer'
+    ],
+
+    'available_sort_by' => [
+        'name',
+        'pop',
+        'created_at',
+        'price',
+    ],
+
+    'available_sort' => [
+        'asc',
+        'desc',
+    ],
+
+    'default_image' => [
+        'user' => '/storage/default_user.png',
+        'product' => '/storage/default_product.png',
     ],
 
     /*

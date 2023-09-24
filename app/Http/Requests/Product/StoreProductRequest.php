@@ -25,6 +25,7 @@ class StoreProductRequest extends FormRequest
                 Rule::in(array_values(config('app.product_status')))
             ],
             'category_id' => 'required|exists:categories,id',
+            'images.*' => 'nullable|image|max:2048',
         ];
     }
 }
