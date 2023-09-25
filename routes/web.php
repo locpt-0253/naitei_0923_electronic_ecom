@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\LocaleController;
 use App\Http\Controllers\Product\ProductController;
@@ -38,6 +39,10 @@ Route::prefix('/cart')->name('cart.')->middleware('auth')->group(function () {
 Route::prefix('/customer')->name('customer.')->middleware('auth')->group(function () {
     Route::get('/profile', [CustomerController::class, 'show'])->name('show');
     Route::put('/profile', [CustomerController::class, 'update'])->name('update');
+});
+
+Route::prefix('/checkout')->name('checkout')->middleware('auth')->group(function () {
+    Route::post('/', CheckoutController::class);
 });
 
 Route::middleware('auth')->group(function () {

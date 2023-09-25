@@ -20,6 +20,7 @@ class CartController extends Controller
         return view('cart.index', [
             'cartProducts' => $cartProducts,
             'totalAmount' => $totalAmount,
+            'addresses' => Auth::user()->addresses,
         ]);
     }
 

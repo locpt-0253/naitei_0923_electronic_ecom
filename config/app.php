@@ -90,6 +90,13 @@ return [
         'other' => 3,
     ],
 
+    'order_status' => [
+        'processing' => 1,
+        'in_transit' => 2,
+        'completed' => 3,
+        'canceled' => 4,
+    ],
+
     'product_status' => [
         'new' =>  1,
         'old' =>  2,
@@ -98,9 +105,11 @@ return [
         'limited' =>  5,
     ],
 
+    'admin_page_pagination_size' => 8,
+
     'role_name' => [
         'admin' => 'Admin',
-        'user' => 'Customer'
+        'user' => 'Customer',
     ],
 
     'available_sort_by' => [
