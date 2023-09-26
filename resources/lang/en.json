@@ -1136,5 +1136,14 @@
     "Male": "Male",
     "Female": "Female",
     "Success": "Success",
-    "Failure": "Failure"
+    "Failure": "Failure",
+    "Image": "Image",
+    "Price": "Price",
+    "Sold": "Sold",
+    "Stock": "Stock",
+    "Status": "Status",
+    "Category": "Category",
+    "Created At": "Created At",
+    "Description": "Description",
+    "Error when :action the :resource": "An error occurred while :action the :resource. Please try again."
 }

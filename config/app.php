@@ -98,6 +98,8 @@ return [
         'limited' =>  5,
     ],
 
+    'admin_page_pagination_size' => 8,
+
     'role_name' => [
         'admin' => 'Admin',
         'user' => 'Customer'

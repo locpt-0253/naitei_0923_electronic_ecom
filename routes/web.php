@@ -4,7 +4,7 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\LocaleController;
-use App\Http\Controllers\Product\ProductController;
+use App\Http\Controllers\Admin\ProductController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -48,6 +48,8 @@ Route::middleware('auth')->group(function () {
             Route::put('/{user}', [UserController::class, 'update'])->name('update');
             Route::delete('/{user}', [UserController::class, 'destroy'])->name('destroy');
         });
+
+        Route::prefix('products')->resource('products', ProductController::class);
     });
 });
 

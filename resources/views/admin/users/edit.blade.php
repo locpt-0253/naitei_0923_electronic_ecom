@@ -1,16 +1,5 @@
 <x-app-layout>
-    <x-slot name="header">
-        <div class="flex gap-5">
-            <h2
-                class="hover:cursor-pointer font-semibold text-xl leading-tight px-2 py-1 @if (request()->is('admin/users*')) text-blue-500 @endif">
-                {{ __('User') }}
-            </h2>
-            <h2
-                class="hover:cursor-pointer font-semibold text-xl leading-tight px-2 py-1 @if (request()->is('admin/product*')) text-blue-500 @endif">
-                {{ __('Product') }}
-            </h2>
-        </div>
-    </x-slot>
+    @include('components.admin-header');
 
     <div class="py-36">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">

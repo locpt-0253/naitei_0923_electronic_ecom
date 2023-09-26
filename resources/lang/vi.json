@@ -1136,5 +1136,14 @@
     "Male": "Nam",
     "Female": "Nữ",
     "Success": "thành công",
-    "Failure": "thất bại"
+    "Failure": "thất bại",
+    "Image": "Hình ảnh",
+    "Price": "Giá",
+    "Sold": "Đã bán",
+    "Stock": "Tồn kho",
+    "Status": "Trạng thái",
+    "Category": "Danh mục",
+    "Created At": "Ngày tạo",
+    "Description": "Mô tả",
+    "Error when :action the :resource": "Đã xảy ra lỗi trong quá trình :action :resource. Vui lòng thử lại."
 }
