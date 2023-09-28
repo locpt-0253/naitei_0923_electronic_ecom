@@ -5,7 +5,9 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\LocaleController;
-use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Product\ProductController;
+use App\Http\Controllers\Admin\ProductController as AdminProductController;
+use App\Http\Controllers\Admin\OrderController as AdminOrderController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -54,7 +56,12 @@ Route::middleware('auth')->group(function () {
             Route::delete('/{user}', [UserController::class, 'destroy'])->name('destroy');
         });
 
-        Route::prefix('products')->resource('products', ProductController::class);
+        Route::prefix('products')->resource('products', AdminProductController::class);
+        
+        Route::prefix('orders')->name('orders.')->group(function () {
+            Route::get('/', [AdminOrderController::class, 'index'])->name('index');
+            Route::put('/{order}/change-status', [AdminOrderController::class, 'changeStatus'])->name('change-status');
+        });
     });
 });
 

@@ -90,6 +90,13 @@ return [
         'other' => 3,
     ],
 
+    'order_status_color' => [
+        1 => 'bg-yellow-200',
+        2 => 'bg-blue-200',
+        3 => 'bg-green-200',
+        4 => 'bg-red-200',
+    ],
+
     'order_status' => [
         'processing' => 1,
         'in_transit' => 2,
