@@ -10,7 +10,7 @@
             <div class="mb-3 text-base text-gray-700">{{ $product->category->name }}</div>
             <div class="flex bg-white overflow-hidden shadow-md p-3">
                 <div class="shrink-0 p-4">
-                    <div class="w-[450px] h-[450px] bg-gray-300"></div>
+                    <x-image-slider :images="$product->images"/>
                 </div>
                 <div class="p-5 box-border flex-auto flex flex-col">
                     <h1 class="text-2xl font-bold ">{{ $product->name }}</h1>
