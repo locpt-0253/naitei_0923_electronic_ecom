@@ -4,15 +4,18 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\UpdateProfileRequest;
+use App\Http\Requests\UpdatePasswordRequest;
 
 class CustomerController extends Controller
 {
     public function show()
     {
         $user = Auth::user();
-        return view('user.account.show', [
+
+        return view('customer.account.show', [
             'user' => $user,
         ]);
     }
@@ -52,6 +55,33 @@ class CustomerController extends Controller
 
         $user->save();
 
+        alert()->success(__('Success'), __("Your account's profile information has been updated!"));
+
         return redirect()->back();
+    }
+
+    public function editPassword()
+    {
+        return view('customer.password.edit');
+    }
+
+    public function updatePassword(UpdatePasswordRequest $request)
+    {
+        $request->validated();
+
+        $user = Auth::user();
+
+        if (Hash::check($request->current_password, $user->password)) {
+            $user->password = Hash::make($request->new_password);
+            $user->save();
+            
+            alert()->success(__('Success'), __('Your password has been updated!'));
+
+            return redirect()->route('customer.profile.show');
+        } else {
+            return redirect()->back()->withErrors([
+                'current_password' => __('The provided password does not match your current password.')
+            ]);
+        }
     }
 }
