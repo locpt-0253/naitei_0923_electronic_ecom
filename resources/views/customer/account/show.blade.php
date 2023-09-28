@@ -13,7 +13,7 @@
                         <div id="info-left" class="p-4 w-[720px] box-border">
                             <span class="text-base font-normal text-gray-500 ">{{ __('Profile') }}</span>
                             <div class="mt-4 rounded-md bg-white box-border">
-                                <form action="{{ route('customer.update') }}" method="POST" enctype="multipart/form-data">
+                                <form action="{{ route('customer.profile.update') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
                                     <div class="box-border flex flex-row">
@@ -110,7 +110,13 @@
                         <div id="info-vertical" class="border-l-gray-500 border-l"></div>
                         <div id="info-right" class="py-6 px-4 flex flex-col" style="width:calc(100% - 720px)">
     
-                            <span class="text-base text-gray-500">{{ __('Phone Number') }} {{ __('and') }} {{ __('Address') }}</span>
+                            <div class="flex justify-between">
+                                <span class="text-base text-gray-500 block">{{ __('Phone Number') }} {{ __('and') }} {{ __('Address') }}</span>
+                                <a href="{{ route('customer.address.index') }}"
+                                    class="py-1.5 px-4 border-blue-600 border rounded-sm text-blue-600">
+                                    {{ __('View') }}
+                                </a>
+                            </div>
                             @foreach($user->addresses as $address)
                             <div class="py-4 border-b border-b-gray-300">
                                 <div class="py-1 flex items-center justify-between text-gray-700">
@@ -151,7 +157,7 @@
                                         {{ __('Change Password') }}
                                     </div>
                                 </div>
-                                <a href="/"
+                                <a href="{{ route('customer.password.edit') }}"
                                     class="py-1.5 px-4 border-blue-600 border rounded-sm text-blue-600">
                                     {{ __('Update') }}
                                 </a>

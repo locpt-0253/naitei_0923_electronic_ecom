@@ -35,6 +35,7 @@
                 {{ $slot }}
             </main>
         </div>
+        @include('sweetalert::alert')
         @livewireScripts
     </body>
 </html>
