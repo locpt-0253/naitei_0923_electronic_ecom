@@ -44,7 +44,7 @@
 
                 <!-- Profile -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-4 sm:flex">
-                    <a href="{{ route('customer.show') }}" class="block self-center cursor-pointer">
+                    <a href="{{ route('customer.profile.show') }}" class="block self-center cursor-pointer">
                         <div class="text-center min-h-[50px] min-w-[50px] bg-gray-100 hover:bg-neutral-200 rounded-full flex items-center">
                             <i class="mx-auto fi fi-sr-user text-2xl text-slate-600"></i>
                         </div>
@@ -68,13 +68,25 @@
                         </x-slot>
 
                         <x-slot name="content">
+
+                            <a href="{{ route('customer.profile.show') }}" class="block box-border">
+                                <x-dropdown-link :href="route('customer.profile.show')">
+                                    {{ __('My Account') }}
+                                </x-dropdown-link>
+                            </a>
+
+                            <!-- My Order -->
+                            <a href="{{ route('customer.orders.index') }}" class="block box-border">
+                                <x-dropdown-link :href="route('customer.orders.index')">
+                                    {{ __('My Orders') }}
+                                </x-dropdown-link>
+                            </a>
+
                             <!-- Authentication -->
-                            <form method="POST" action="{{ route('logout') }}">
+                            <form method="POST" action="{{ route('logout') }}" id="logout-form">
                                 @csrf
 
-                                <x-dropdown-link :href="route('logout')"
-                                        onclick="event.preventDefault();
-                                                    this.closest('form').submit();">
+                                <x-dropdown-link id="logout-button">
                                     {{ __('Log Out') }}
                                 </x-dropdown-link>
                             </form>

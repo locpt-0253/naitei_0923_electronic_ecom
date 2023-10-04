@@ -5,6 +5,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\LocaleController;
+use App\Http\Controllers\Product\OrderController;
 use App\Http\Controllers\Product\ProductController;
 use App\Http\Controllers\Admin\ProductController as AdminProductController;
 use App\Http\Controllers\Admin\OrderController as AdminOrderController;
@@ -39,8 +40,26 @@ Route::prefix('/cart')->name('cart.')->middleware('auth')->group(function () {
 });
 
 Route::prefix('/customer')->name('customer.')->middleware('auth')->group(function () {
-    Route::get('/profile', [CustomerController::class, 'show'])->name('show');
-    Route::put('/profile', [CustomerController::class, 'update'])->name('update');
+    Route::prefix('/profile')->name('profile.')->group(function () {
+        Route::get('/', [CustomerController::class, 'show'])->name('show');
+        Route::put('/', [CustomerController::class, 'update'])->name('update');
+    });
+    Route::prefix('/password')->name('password.')->group(function () {
+        Route::get('/edit', [CustomerController::class, 'editPassword'])->name('edit');
+        Route::put('/', [CustomerController::class, 'updatePassword'])->name('update');
+    });
+    Route::prefix('/address')->name('address.')->group(function () {
+        Route::get('/', [AddressController::class, 'index'])->name('index');
+        Route::get('/{address}/edit', [AddressController::class, 'edit'])->name('edit');
+        Route::get('/create', [AddressController::class, 'create'])->name('create');
+        Route::post('/', [AddressController::class, 'store'])->name('store');
+        Route::put('/{address}', [AddressController::class, 'update'])->name('update');
+        Route::delete('/{address}', [AddressController::class, 'destroy'])->name('destroy');
+    });
+    Route::prefix('/orders')->name('orders.')->group(function () {
+        Route::get('/', [OrderController::class, 'index'])->name('index');
+        Route::put('/{order}', [OrderController::class, 'update'])->name('update');
+    });
 });
 
 Route::prefix('/checkout')->name('checkout')->middleware('auth')->group(function () {
