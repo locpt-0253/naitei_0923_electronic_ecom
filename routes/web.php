@@ -32,14 +32,14 @@ Route::prefix('/products')->name('products.')->group(function () {
     Route::get('/{productId}', [ProductController::class, 'show'])->name('show');
 });
 
-Route::prefix('/cart')->name('cart.')->middleware('auth')->group(function () {
+Route::prefix('/cart')->name('cart.')->middleware(['auth', 'verified'])->group(function () {
     Route::get('/', [CartController::class, 'index'])->name('index');
     Route::post('/', [CartController::class, 'store'])->name('store');
     Route::put('/{cart}', [CartController::class, 'update'])->name('update');
     Route::delete('/{cart}', [CartController::class, 'destroy'])->name('destroy');
 });
 
-Route::prefix('/customer')->name('customer.')->middleware('auth')->group(function () {
+Route::prefix('/customer')->name('customer.')->middleware(['auth', 'verified'])->group(function () {
     Route::prefix('/profile')->name('profile.')->group(function () {
         Route::get('/', [CustomerController::class, 'show'])->name('show');
         Route::put('/', [CustomerController::class, 'update'])->name('update');
@@ -62,7 +62,7 @@ Route::prefix('/customer')->name('customer.')->middleware('auth')->group(functio
     });
 });
 
-Route::prefix('/checkout')->name('checkout')->middleware('auth')->group(function () {
+Route::prefix('/checkout')->name('checkout')->middleware(['auth', 'verified'])->group(function () {
     Route::post('/', CheckoutController::class);
 });
 
@@ -86,7 +86,7 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/change-locale/{language}', [LocaleController::class, 'changeLocale'])->name('locale');
 
